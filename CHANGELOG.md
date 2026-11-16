@@ -1,5 +1,22 @@
 # Changelog: Combat (Lite)
 
+## 1.4.0 (2026-10-23)
+
+Combat works in 3D.
+
+- **New 3D nodes.** `HitboxLite3D` and `HurtboxLite3D` (Area3D) do what their 2D twins do, with the
+  same fields.
+- **The hit flash works on 3D characters.** A colour fades over every mesh under the body, and each
+  mesh gets back whatever it had. A Sprite3D or Label3D is tinted instead, like a 2D sprite, and
+  particles are left alone. Meshes with cut-out edges (leaves, hair cards) flash as solid shapes.
+- **The dock builds 3D nodes in a 3D scene.** Add Health + Hurtbox and Add Hitbox add the 3D nodes
+  with a box shape, and an Enemy AI Brain's attack radius is set in metres. 2D scenes work as before.
+  Under a plain Node scene root, the node you select decides: a Node3D gets the 3D nodes.
+- **New demo:** `demo/combat_demo_3d.tscn`. Walk up to the dummy with WASD and hit it with Space.
+- **One small change to an existing signal.** The `position` that `CombatLite.hit_landed` sends has no
+  type now, because a 3D hurtbox sends a Vector3 (the middle of its shape, so sparks land on the body and not
+  at the feet). A 2D hurtbox still sends a Vector2.
+
 ## 1.3.2 (2026-10-12)
 
 The tabs show their names on Godot 4.5.
@@ -77,19 +94,19 @@ A beaten enemy disappears, with no code.
   pickers and the notes at the bottom ran past the edge. It now asks for the same width as the
   other tabs.
 
-## 1.0.2 — 2026-08-10
+## 1.0.2 (2026-08-10)
 
 A quieter first run. No change to how anything behaves.
 
 - **The debugger no longer fills with warnings when you press Play.** The event bus declares the signals every system talks through, and Godot flagged each one as unused because the code that sends and receives them lives in the other files. Nothing was broken, but a first run could print a stack of warnings that looked like your mistakes. They're gone.
 
-## 1.0.1 — 2026-08-10
+## 1.0.1 (2026-08-10)
 
 Safer download.
 
 - **The download can't damage a project you're already working on.** It now unzips into one folder named after the pack, instead of putting files loose at the top. Before this, unzipping it straight into an existing game overwrote that game's name, its start-up scene and the list of add-ons you had switched on. It can't reach any of that now.
-- **Added START-HERE.txt and INSTALLING.txt** at the top of the folder — what's in the download, the two-minute install, and what to do if something goes wrong. Plain text, opens anywhere.
-- **Fixed: the docs pointed at a self-test file that wasn't there.** They said `tools/verify.tscn`; in the download it's `tools/combat_lite/verify.tscn`. The paths now match what's actually in the box.
+- **Added START-HERE.txt and INSTALLING.txt** at the top of the folder: what's in the download, the two-minute install, and what to do if something goes wrong. Plain text, opens anywhere.
+- **Fixed: the docs pointed at a self-test file that wasn't there.** They said `tools/verify.tscn`, but in the download it's `tools/combat_lite/verify.tscn`. The paths now match what's actually in the box.
 
 ## 1.0.0
 

@@ -25,6 +25,10 @@ Or by hand, on your enemy scene:
 - Add a **HurtboxLite** (Area2D) with a **CollisionShape2D** covering the body.
   Set its `team` (e.g. 1). It auto-finds the HealthLite sibling.
 
+In a 3D scene (one whose top node is a Node3D, or a plain Node with a Node3D selected) the same button adds a **HealthLite** and a
+**HurtboxLite3D** with a 0.9 m wide, 1.8 m tall box. By hand, use a **HurtboxLite3D** (Area3D)
+with a **CollisionShape3D** covering the body.
+
 ## 3. Make something that deals damage
 
 In the **Combat** dock: select the weapon swing, projectile or spike, leave its
@@ -34,6 +38,9 @@ Or by hand, on your weapon swing / projectile / spike:
 - Add a **HitboxLite** (Area2D) with a **CollisionShape2D**.
 - Set `damage` (e.g. 20) and a **different** `team` (e.g. 0).
 - Tick `one_shot` for projectiles that should hit once.
+
+In a 3D scene **Add Hitbox** adds a **HitboxLite3D** with a 1.5 m box. By hand, use a
+**HitboxLite3D** (Area3D) with a **CollisionShape3D**.
 
 When the hitbox overlaps the hurtbox, Health drops. At 0 it emits `died`, and an
 enemy made with **Remove it when it dies** ticked is taken out of the game right
@@ -55,10 +62,12 @@ func _ready():
         $HitSound.play())
 ```
 
+`pos` is a Vector2 when a 2D hurtbox was hit and a Vector3 when a 3D one was.
+
 ## Teams
 
 Same `team` never damages each other (no friendly fire). Give the player team 0,
-enemies team 1; an enemy attack uses a hitbox on team 1 so it hits the player
+enemies team 1. An enemy attack uses a hitbox on team 1, so it hits the player
 (team 0) but not other enemies.
 
 The **Combat** dock does this for you with its two **Side** picks: Health +

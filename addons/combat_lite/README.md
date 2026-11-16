@@ -1,8 +1,8 @@
 # Combat (Lite)
 
-Free no-code combat core for **Godot 4.5+**. A Health component and team-gated
+Free no-code combat core for **Godot 4.5+**, in 2D and in 3D. A Health component and team-gated
 Hitbox / Hurtbox areas, wired through a global hit bus. Drop the nodes in, set
-damage in the Inspector — no code to make things take damage and die.
+damage in the Inspector. No code to make things take damage and die.
 
 Part of the **SELODEV** system line. This is the free core, with a **Combat** dock
 that bakes Health, Hurtbox and Hitbox onto a node. **Combat (Pro)** adds damage
@@ -23,11 +23,17 @@ kill reports.
    **Player side (hurts enemies)**, click **Add Hitbox**. The two defaults
    already hurt each other.
 
-Prefer to do it by hand? Add **HealthLite** + **HurtboxLite** (Area2D + shape) to
-the target and a **HitboxLite** (Area2D + shape) to the attacker — same result.
+To do it by hand, add **HealthLite** + **HurtboxLite** (Area2D + shape) to
+the target and a **HitboxLite** (Area2D + shape) to the attacker. The result is the same.
+
+For a 3D game: in a 3D scene (a scene whose top node is a Node3D) the same two
+buttons build the 3D nodes. **Add Health + Hurtbox** adds a `HurtboxLite3D` with a
+box shape, and **Add Hitbox** adds a `HitboxLite3D`. By hand, use **HurtboxLite3D**
+and **HitboxLite3D** (Area3D + CollisionShape3D). The Health node is the same in 2D and 3D. If your scene's top node is a plain Node,
+the node you select decides: a Node3D gets the 3D nodes.
 
 When the hitbox overlaps a different-team hurtbox, Health takes the damage and the
-`CombatLite.hit_landed` bus fires — connect your VFX/audio there.
+`CombatLite.hit_landed` bus fires. Connect your VFX/audio there.
 
 ## The pieces
 
@@ -36,7 +42,9 @@ When the hitbox overlaps a different-team hurtbox, Health takes the damage and t
 | `HealthLite` | `take_damage()` / `heal()` / `revive()`; signals `damaged`, `healed`, `died`; `is_alive()`, `fraction()`; `remove_on_death` (the dock's tick); `flash_on_hit` / `flash_color` (on by default) |
 | `HurtboxLite` (Area2D) | "can be hit"; finds its sibling Health; `team` gates friendly fire |
 | `HitboxLite` (Area2D) | "deals damage"; `damage`, `team`, `one_shot` |
-| `CombatLite` (autoload) | global `hit_landed(position, amount, source)` + `entity_died(entity)` |
+| `HurtboxLite3D` (Area3D) | the 3D twin of `HurtboxLite`. The bus gets a Vector3 position |
+| `HitboxLite3D` (Area3D) | the 3D twin of `HitboxLite`, with the same fields |
+| `CombatLite` (autoload) | global `hit_landed(position, amount, source)` (the position is a Vector2 from a 2D hurtbox and a Vector3 from a 3D one) + `entity_died(entity)` |
 
 ## Reacting to hits (e.g. VFX)
 

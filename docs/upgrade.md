@@ -9,6 +9,9 @@ When you outgrow it, **Combat (Pro)** adds the parts that get fiddly to hand-rol
 | Team-gated Hitbox/Hurtbox | ✅ | ✅ |
 | Global hit bus | ✅ | ✅ |
 | No-code chooser dock | ✅ | ✅ |
+| 3D hitboxes and hurtboxes | ✅ | ✅ |
+| Hit flash on 2D and 3D characters | ✅ | ✅ |
+| Floating health bars over 3D enemies | — | ✅ |
 | Damage types & weaknesses | — | ✅ |
 | Critical hits | — | ✅ |
 | Resistances / armor / defense | — | ✅ |
