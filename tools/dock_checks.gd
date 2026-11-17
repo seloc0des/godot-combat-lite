@@ -81,7 +81,7 @@ static func run(host: Node) -> Dictionary:
 		"reach: this dock's boxes (32x32 each) -> the brain's attack radius is 24, and the status says so (%.1f)" % _radius(dflt)) and ok
 	ok = _chk(lines, not said.contains("same side"), "reach: an enemy side hitbox and a player side hurtbox get no side warning") and ok
 	ok = _chk(lines, dflt["brain"].attack_node_path == dflt["brain"].get_path_to(dflt["hit"]) and said.contains("switches this hitbox on for each attack"),
-		"swing: a Pro brain gets attack_node_path pointed at the hitbox, and the status says it keeps hitting [%s]" % str(dflt["brain"].attack_node_path)) and ok
+		"swing: a full brain gets attack_node_path pointed at the hitbox, and the status says it keeps hitting [%s]" % str(dflt["brain"].attack_node_path)) and ok
 
 	var custom := _reach_rig(host, Vector2(-8500, 0), _circle(24), _rect(20, 20), BRAIN)
 	said = reach.fit_enemy_reach(custom["enemy"], custom["hit"], custom["root"])
@@ -124,7 +124,7 @@ static func run(host: Node) -> Dictionary:
 	custom["brain"].attack_node_path = custom["brain"].get_path_to(blade)
 	said = reach.fit_enemy_reach(custom["enemy"], custom["hit"], custom["root"])
 	ok = _chk(lines, custom["brain"].get_node_or_null(custom["brain"].attack_node_path) == blade and said.contains("already swings 'Sword'"),
-		"swing: a Pro brain already pointed at something else keeps it, and the status says so") and ok
+		"swing: a full brain already pointed at something else keeps it, and the status says so") and ok
 	var lite := _reach_rig(host, Vector2(-5500, 0), _rect(32, 32), _rect(32, 32), BRAIN_LITE)
 	said = reach.fit_enemy_reach(lite["enemy"], lite["hit"], lite["root"])
 	ok = _chk(lines, _radius(lite) == 24.0 and said.contains("switches this hitbox on for each attack"),

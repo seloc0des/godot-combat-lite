@@ -1,9 +1,9 @@
-# Upgrading to Combat (Pro)
+# Upgrading to the full Combat
 
 Combat (Lite) is the free core: Health, team-gated Hitbox/Hurtbox, and a hit bus.
-When you outgrow it, **Combat (Pro)** adds the parts that get fiddly to hand-roll.
+When you outgrow it, **the full Combat** adds the parts that get fiddly to hand-roll.
 
-| | Lite (free) | Pro |
+| | Lite (free) | Full |
 |---|---|---|
 | Health + take_damage/heal | ✅ | ✅ |
 | Team-gated Hitbox/Hurtbox | ✅ | ✅ |

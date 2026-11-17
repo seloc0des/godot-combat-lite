@@ -1,7 +1,7 @@
 extends Node
 
-# Test stand-in for an Enemy AI (Pro) brain. The Combat dock spots one by the
-# exports both tiers share, and a Pro one by attack_node_path, so this needs no
+# Test stand-in for the full Enemy AI brain. The Combat dock spots one by the
+# exports both tiers share, and a full one by attack_node_path, so this needs no
 # Enemy AI pack.
 
 @export var detect_radius: float = 160.0

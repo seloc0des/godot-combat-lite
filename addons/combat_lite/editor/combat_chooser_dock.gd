@@ -130,7 +130,7 @@ func bake_hurtable(target: Node, as_3d: bool = false) -> String:
 	var team := _hurt_side.get_selected_id()
 	var side := "player side" if team == TEAM_PLAYER else "enemy side"
 	# Clicking twice used to stack a second Health + Hurtbox. Retune the ones that
-	# are there instead, like the Pro dock does.
+	# are there instead, like the full dock does.
 	var h := _find_health(target)
 	if h != null:
 		h.set("max_health", float(_hp.value))
@@ -348,7 +348,7 @@ func _on_selection_changed() -> void:
 
 # ---- enemy reach (headless-safe, the verify calls these) -----------------
 
-# A hitbox on an Enemy AI enemy (Pro or Lite brain on the node or one of its
+# A hitbox on an Enemy AI enemy (full or Lite brain on the node or one of its
 # children) only lands if the brain walks close enough, so give each brain the
 # attack radius that lets this hitbox overlap the player's hurtbox, and make it
 # swing the hitbox. Returns what it did for the status line, "" when there's no
@@ -392,7 +392,7 @@ func fit_enemy_reach(body: Node, hitbox: Node, root: Node) -> String:
 
 
 # A hitbox only hits when something starts touching it, so a brain has to switch
-# it back on for every attack to keep hurting a player who stays in reach. Pro
+# it back on for every attack to keep hurting a player who stays in reach. The full version
 # brains swing whatever attack_node_path points at: point it here, unless the
 # buyer already pointed it somewhere else. Lite brains do it on their own.
 func _swing(brain: Node, hitbox: Node) -> String:
@@ -444,12 +444,12 @@ func _reach_why(hit_half: float, hurt_half: float, touch: float, s: float = 1.0)
 	return why
 
 
-# Enemy AI's brains, Pro or Lite, by their exports, so this dock loads without Enemy AI
+# Enemy AI's brains, full or Lite, by their exports, so this dock loads without Enemy AI
 func _is_brain(n: Node) -> bool:
 	return "attack_radius" in n and "detect_radius" in n and "target_group" in n
 
 
-# the first hurtbox (Pro or Lite) on whatever this scene marks as the player
+# the first hurtbox (full or Lite) on whatever this scene marks as the player
 func _player_hurtbox(root: Node) -> Node:
 	for p in _scene_players(root):
 		for n in [p] + p.find_children("*", "", true, false):

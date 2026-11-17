@@ -46,7 +46,7 @@ When the hitbox overlaps the hurtbox, Health drops. At 0 it emits `died`, and an
 enemy made with **Remove it when it dies** ticked is taken out of the game right
 after. By hand, that's the `remove_on_death` box on the HealthLite.
 
-On an enemy made with the Enemy AI pack (Pro or Lite), **Add Hitbox** also sets
+On an enemy made with the Enemy AI pack (full or Lite), **Add Hitbox** also sets
 how close its Brain walks up (its attack radius), so the hitbox reaches the
 player's hurtbox, and has the Brain switch the hitbox on for every attack, so
 the enemy hurts the player once per attack cooldown while they stay in reach.
@@ -80,4 +80,4 @@ works as it is.
 - Health API (`heal`, `revive`, `fraction` for health bars) → README.
 - Damage types, crits, resistances, knockback, i-frames, respawn, projectiles,
   hitstop, and dock buttons for health bars, game over on death and kill reports
-  come with **Combat (Pro)**.
+  come with **the full Combat**.

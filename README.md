@@ -5,7 +5,7 @@ Hitbox / Hurtbox areas, wired through a global hit bus. Drop the nodes in, set
 damage in the Inspector. No code to make things take damage and die.
 
 Part of the **SELODEV** system line. This is the free core, with a **Combat** dock
-that bakes Health, Hurtbox and Hitbox onto a node. **Combat (Pro)** adds damage
+that bakes Health, Hurtbox and Hitbox onto a node. **The full Combat** adds damage
 types & crits, resistances, knockback, invincibility frames, respawn,
 hitstop, projectiles, and dock buttons for health bars, game over on death and
 kill reports.
